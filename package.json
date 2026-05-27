@@ -1,0 +1,26 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+      "start":"nodemon app.js"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Diputhapa-dotcom/nodejs.git"
+  },
+  "author": "Dipu thapa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Diputhapa-dotcom/nodejs/issues"
+  },
+  "homepage": "https://github.com/Diputhapa-dotcom/nodejs#readme",
+  "dependencies": {
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14"
+  }
+}
