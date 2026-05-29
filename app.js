@@ -1,24 +1,17 @@
-const express=require("express");
+const express=require('express');
 const app=express();
 
+require("./model/index");
 
-// to make html environment 
-app.set("view engine","ejs")
+app.set('view engine','ejs');
 
-app.get("/login",(req,res)=>{
-    const name="dipu thapa"
-    res.render("login.ejs");
+app.get("/main",(req,res)=>{
+    res.render("auth/main.ejs");
+
 });
 
-app.get("/login",(req,res)=>{
-    res.render("login.ejs")
-})
-
-
-// attaching external css
-app.use(express.static('public/css/'))
-
+app.use(express.static("public/css"));
 
 app.listen(3000,()=>{
-    console.log("The project has startes at port 3000");
-})
+    console.log("The project has startes at 3000 port");
+});
