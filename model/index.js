@@ -6,6 +6,8 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
   dialect: dbConfig.dialect,
   operatorsAliases: false,
+  port:3306,
+  
   pool: {
     max: dbConfig.pool.max,
     min: dbConfig.pool.min,
@@ -30,6 +32,7 @@ db.sequelize = sequelize;
 
 // importing model files 
 db.blogs = require("./blogModel.js")(sequelize, DataTypes);
+db.registers = require("./register.js")(sequelize,DataTypes);
 // add(1,2)
 
 
