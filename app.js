@@ -22,9 +22,26 @@ app.get("/main",(req,res)=>{
 
 
 });
-
+// register validation
 app.post("/main", async (req,res)=>{
-   const {username,email,password}= req.body;
+  const {username,email,password}= req.body;
+
+  if(!username||!password||!email){
+    return res.send("please enter password");
+  }
+  const data = await registers.findAll({
+    where: {
+      email:email
+    }
+  })
+  
+
+
+
+  if(data.length>0){
+    return res.send("already register email");
+  }
+  
 
      await registers.create({
     username,
