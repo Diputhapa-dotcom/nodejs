@@ -5,6 +5,7 @@ const { registers } = require('./model/index');
 // const { json } = require('sequelize');
 // const { DataTypes } = require('sequelize');
 const app=express();
+const bcrypt = require("bcrypt")
 
 db= require("./model/index");
 
@@ -27,9 +28,11 @@ app.post("/main", async (req,res)=>{
 
      await registers.create({
     username,
-    email,
-    password
-  })
+    password : bcrypt.hashSync( password,10),
+    email
+  });
+  res.send("successful")
+
 })
 
 app.use(express.static("public/css"));
