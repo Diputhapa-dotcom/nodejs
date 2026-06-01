@@ -26,31 +26,57 @@ app.get("/main",(req,res)=>{
 app.post("/main", async (req,res)=>{
   const {username,email,password}= req.body;
 
-  if(!username||!password||!email){
-    return res.send("please enter password");
-  }
-  const data = await registers.findAll({
+  if(!username||!email||!password){
+    return res.send("please provide username,email,password");
+  };
+  
+
+
+  const data = await registers.findAll({ 
     where: {
-      email:email
+      email:email //comparing database email and user email if there is same email then it return 1 
     }
-  })
-  
+  });
+  if(data.length>0){ //the above 1 is compare below if the consition is true then it shows existed else move to the next line
+    res.send("the email already been existed");
+  };
 
+   
 
-
-  if(data.length>0){
-    return res.send("already register email");
-  }
-  
-
-     await registers.create({
+    await registers.create({  //after false then it insert the comming data into database
     username,
     password : bcrypt.hashSync( password,10),
     email
   });
-  res.send("successful")
+  res.send("successful");
+
 
 })
+
+
+
+app.get("/login",(req,res)=>{
+  res.render("auth/login.ejs");
+});
+app.post("/login",(req,res)=>{
+  const {email,password}=req.body;
+  if(!email||!password){
+    return res.send("please enter email and password");
+  }
+
+  
+  //email check
+   
+  
+
+
+
+})
+
+
+
+
+
 
 app.use(express.static("public/css"));
 
