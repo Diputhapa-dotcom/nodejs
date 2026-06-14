@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      subTitle: {
+      subtitle: {
         type: DataTypes.STRING,
         allowNull : false
       },
@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
         allowNull:false
       },
+      image:{
+        type:DataTypes.TEXT
+    
+      }
       
     });
     return Blog;

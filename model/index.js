@@ -36,7 +36,7 @@ db.registers = require("./register.js")(sequelize,DataTypes);
 
 db.logins = require("./loginModel.js")(sequelize,DataTypes);
 
-// add(1,2)
+//relationship
 
 
 db.sequelize.sync({ force: false}).then(() => {

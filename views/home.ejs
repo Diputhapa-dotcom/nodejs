@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin:0px;
+        padding:0px;
+        box-sizing: border-box;
+    }
+    section{
+        height: 100vh;
+        width: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .hero{
+        width:40%;
+        box-shadow: 0,0,0,0.3,black;
+        margin:20px;
+        padding:8px;
+    }
+</style>
+<body>
+    
+    <section>
+       <%  items.forEach((item)=>{ %>
+
+        <div class="hero">
+            <img src="<%-item.image %>">
+            <h4><%- item.title %></h4>
+            <p> <%- item.subtitle %></p>
+            <p> <%- item.description %></p>
+            <button><a href="/seemore/<%- item.id %>">Seemore</a></button>
+
+        </div>
+   <% }) %>
+    </section>
+</body>
+</html>
