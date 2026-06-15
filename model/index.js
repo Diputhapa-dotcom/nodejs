@@ -37,7 +37,8 @@ db.registers = require("./register.js")(sequelize,DataTypes);
 db.logins = require("./loginModel.js")(sequelize,DataTypes);
 
 //relationship
-
+db.registers.hasMany(db.blogs)
+db.blogs.belongsTo(db.registers)
 
 db.sequelize.sync({ force: false}).then(() => {
   console.log("yes re-sync done");

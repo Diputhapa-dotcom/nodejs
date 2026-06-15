@@ -12,7 +12,7 @@ const { isAuthenticate } = require("./middleware/isAuthenticate");
 const app = express();
 const cookieParser = require("cookie-parser");
 
-require("./model")
+require("./model");
 app.set("view engine","ejs");
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
