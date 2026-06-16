@@ -20,8 +20,11 @@ const files = multer({storage:storage});
 app.use(cookieParser());
 
 
-
-
+//ccokie parser tala rakhni kina vaney yo middle ware ho
+app.use((req,res,next)=>{
+    res.locals.currentuser = req.cookies.token;
+    next();
+});
 
 app.get("/register",registerGet);
 app.post("/register",registerPost);
@@ -30,12 +33,10 @@ app.post("/login",loginPost)
 app.get("/blog",blogGet);
 app.post("/blog",files.single("image"),isAuthenticate,blogPost);
 app.get("/seemore/:id",seeGet);
-app.get("/delete/:id",deleteGet);
+app.get("/delete/:id",isAuthenticate,deleteGet);
 app.get("/home",homeGet);
 app.get("/update/:id",updateGet);
 app.post("/update/:id",files.single("image"),updatePost);
-
-
 
 
 

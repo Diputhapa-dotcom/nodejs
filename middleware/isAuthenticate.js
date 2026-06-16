@@ -10,6 +10,6 @@ exports.isAuthenticate = async (req,res,next)=>{
      return res.redirect("/login");
     }
         const verifyResult = await promisify(jwt.verify)(token,process.env.password);
-        req.registerId = verifyResult.id;
+        req.registerId = verifyResult.id;   
         next()
 }

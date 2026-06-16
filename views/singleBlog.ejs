@@ -38,8 +38,11 @@
             <h4><%- data.title %></h4>
             <p> <%- data.subtitle %></p>
             <p> <%- data.description %></p>
-            <button><a href="/delete/<%- data.id %>">Delete</a></button>
-            <button><a href="/update/<%- data.id %>">Update</a></button>
+            <p> <%- data.register.username %></p>
+           <% if(currentuser){ %>
+                <button><a href="/delete/<%- data.id %>">Delete</a></button>
+                <button><a href="/update/<%- data.id %>">Update</a></button>
+           <% } %>
 
           
 

@@ -6,11 +6,12 @@ exports.blogGet= (req,res)=>{
 
 };
 exports.blogPost=async (req,res)=>{
-   const registerId = req.registersId//relationship data base ko yaa chai middleware bata value aako ho
+   const registerId = req.registerId//relationship data base ko yaa chai middleware bata value aako ho
+  //  console.log(username)
   const {title,subtitle,description,image} = req.body;
   // console.log(req.file)
   
-  const data = await blogs.create({
+  const data = await blogs.create({ 
     title,
     subtitle,
     description,
