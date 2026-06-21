@@ -11,6 +11,9 @@ const { updateGet, updatePost } = require("./controller/updateController");
 const { isAuthenticate } = require("./middleware/isAuthenticate");
 const app = express();
 const cookieParser = require("cookie-parser");
+const { forgotGet, forgotPost } = require("./controller/forgotPasswordController");
+const { otpGet, otpPost } = require("./controller/otpverificationController");
+// const { render } = require("ejs");
 
 require("./model");
 app.set("view engine","ejs");
@@ -37,8 +40,10 @@ app.get("/delete/:id",isAuthenticate,deleteGet);
 app.get("/home",homeGet);
 app.get("/update/:id",updateGet);
 app.post("/update/:id",files.single("image"),updatePost);
-
-
+app.get("/forgotpassword",forgotGet);
+app.post("/forgotpassword",forgotPost);
+app.get("/otpverification",otpGet);
+app.post("/otpverification/:id",otpPost);
 
 
 

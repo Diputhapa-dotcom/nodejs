@@ -12,7 +12,9 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull:false
       },
-      
+      otp:{
+        type:DataTypes.STRING
+      }
     });
     return Register;
   };

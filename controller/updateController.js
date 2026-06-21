@@ -8,7 +8,6 @@ exports.updateGet = async (req,res)=>{
 
 }
 exports.updatePost = async (req,res)=>{
-    console.log(req.body)
     const {title,subtitle,description,image}=req.body;
 const id = req.params.id;
    await blogs.update({
