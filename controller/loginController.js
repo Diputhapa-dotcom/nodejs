@@ -23,9 +23,10 @@ if(data.length>0){
 
     const token = jwt.sign({id:data[0].id},"secretpassword",{expiresIn:"1d"});   // token generate
     res.cookie("token",token);
-    console.log(token);
     res.redirect("/blog")
-  }else{
+  }
+
+      else{
     res.send("incorrect password");
   }
   

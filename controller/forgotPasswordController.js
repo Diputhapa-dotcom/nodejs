@@ -31,6 +31,7 @@ exports.forgotPost=async (req,res)=>{
     }
     await sendmail(data); //function call gareko
     userData[0].otp = otp; //userdata vitra otp haleko
+    userData[0].otpGenerateTime =Date.now()
     await userData[0].save()  //save is essential natra database ma save hudaina ram ma matra save hunxa ra yedi ctr + c gareu vaney tyo otp jatti urcha
     res.redirect("/otpverification?email=" + email); //yo email chat get wala ma janxa kina vaney hamla database bata jhikera pthako haina button thichera matra pthako
 }

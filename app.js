@@ -13,6 +13,7 @@ const app = express();
 const cookieParser = require("cookie-parser");
 const { forgotGet, forgotPost } = require("./controller/forgotPasswordController");
 const { otpGet, otpPost } = require("./controller/otpverificationController");
+const { resetGet, resetpost } = require("./controller/resetpasswordController");
 // const { render } = require("ejs");
 
 require("./model");
@@ -23,7 +24,7 @@ const files = multer({storage:storage});
 app.use(cookieParser());
 
 
-//ccokie parser tala rakhni kina vaney yo middle ware ho
+//ccokie parser tala rakhni kina vaney yo middleware ho
 app.use((req,res,next)=>{
     res.locals.currentuser = req.cookies.token;
     next();
@@ -44,6 +45,8 @@ app.get("/forgotpassword",forgotGet);
 app.post("/forgotpassword",forgotPost);
 app.get("/otpverification",otpGet);
 app.post("/otpverification/:id",otpPost);
+app.get("/resetpassword",resetGet);
+app.post("/resetpassword/:email/:otp",resetpost);
 
 
 

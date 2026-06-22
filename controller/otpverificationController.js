@@ -17,10 +17,16 @@ const email = req.params.id;
         email:email,
         otp:otp
     }
-  })
+  });
   if(data.length===0){
      return res.send("incorrect otp");
     }
-        res.send("correct otp")
-    
+    const currentTime = Date.now();
+    const otpGenerateTime = data[0].otpGenerateTime
+    const checkTime = currentTime- otpGenerateTime;
+    if(checkTime >=120000){
+     return res.send("otp has expired");
+    }
+    res.redirect(`/resetpassword?email=${email}&otp=${otp}`);
+        // res.redirect("/resetpassword?email=" + email + "&otp=" +otp);
 }
