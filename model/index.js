@@ -35,12 +35,21 @@ db.blogs = require("./blogModel.js")(sequelize, DataTypes);
 db.registers = require("./register.js")(sequelize,DataTypes);
 
 db.logins = require("./loginModel.js")(sequelize,DataTypes);
+db.comments = require("./commentModel.js")(sequelize,DataTypes)
 
 //relationship
 db.registers.hasMany(db.blogs)
 db.blogs.belongsTo(db.registers)
 
-db.sequelize.sync({ force: false}).then(() => {
+db.registers.hasMany(db.comments);
+db.comments.belongsTo(db.registers);
+
+
+db.blogs.hasMany(db.comments);
+db.comments.belongsTo(db.blogs)
+
+
+db.sequelize.sync({ force:false}).then(() => {
   console.log("yes re-sync done");
 });
 

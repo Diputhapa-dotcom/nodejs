@@ -12,8 +12,6 @@ exports.resetGet = (req,res)=>{
 exports.resetpost=async (req,res)=>{
 const {email,otp} = req.params;
   const {newpassword,newpasswordconfirm} = req.body;
-  console.log(newpassword)
-  console.log(newpasswordconfirm)
   if(newpassword !==newpasswordconfirm){
    return res.send("please enter same newpassword and confirmationpassword");
   }
@@ -23,6 +21,9 @@ const {email,otp} = req.params;
         otp
     }
   });
+  if(userData.length ===0){
+    return res.send("no user with that email and otp")
+  }
  await registers.update({
     password: bcrypt.hashSync(newpassword,10)
   },{

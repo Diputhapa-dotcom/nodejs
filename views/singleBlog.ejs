@@ -26,7 +26,15 @@
 
        
     }
-
+    .comments{
+    position: relative;
+    top:6cm;
+    left:100px;
+    }
+.comments input{
+    height:20px;
+    padding:20px;
+}
 </style>
 <body>
     
@@ -43,10 +51,17 @@
                 <button><a href="/delete/<%- data.id %>">Delete</a></button>
                 <button><a href="/update/<%- data.id %>">Update</a></button>
            <% } %>
-
-          
-
+              
+           
         </div>
+        <form action="/comment" class="comments" method="post">
+                  
+                          <input type="text" placeholder="Write comments" name="comments">
+                          <input type="hidden" name="blogID" value="<%-data.id %>">
+             <input type="submit" value="post">
+             
+        </form>
+             
   
     </section>
 </body>

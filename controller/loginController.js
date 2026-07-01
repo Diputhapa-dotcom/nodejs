@@ -17,8 +17,8 @@ exports.loginPost= async (req,res)=>{
     }
   });
 if(data.length>0){
-  console.log(data[0].email)
-  const isPasMatch = bcrypt.compare(password,data[0].email);
+  console.log(data[0].password)
+  const isPasMatch = bcrypt.compareSync(password,data[0].password);
   if(isPasMatch){  
 
     const token = jwt.sign({id:data[0].id},"secretpassword",{expiresIn:"1d"});   // token generate
@@ -29,7 +29,6 @@ if(data.length>0){
       else{
     res.send("incorrect password");
   }
-  
 }else{
   res.send("invalid email");
 }

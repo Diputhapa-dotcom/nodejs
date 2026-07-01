@@ -5,7 +5,7 @@ exports.homeGet = async (req,res)=>{
     const items = await blogs.findAll({
      include:{
       model:registers
-
+          
      }
     });
     console.log(items)

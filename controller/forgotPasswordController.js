@@ -23,6 +23,7 @@ exports.forgotPost=async (req,res)=>{
         return res.send("no user with that email");
     }
     const otp = Math.floor(1000 + Math.random()*9999);
+    console.log(otp)
     
     const data = {
         email:email,

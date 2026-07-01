@@ -14,14 +14,23 @@ const cookieParser = require("cookie-parser");
 const { forgotGet, forgotPost } = require("./controller/forgotPasswordController");
 const { otpGet, otpPost } = require("./controller/otpverificationController");
 const { resetGet, resetpost } = require("./controller/resetpasswordController");
+const { commentPost } = require("./controller/commentController");
 // const { render } = require("ejs");
+
+
+
+
+
+
+
 
 require("./model");
 app.set("view engine","ejs");
-app.use(express.urlencoded({extended:true}));
 app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 const files = multer({storage:storage});
 app.use(cookieParser());
+app.use(express.static("./files/"));
 
 
 //ccokie parser tala rakhni kina vaney yo middleware ho
@@ -30,10 +39,20 @@ app.use((req,res,next)=>{
     next();
 });
 
+
+
+
+
+
+
+
+
+
+
 app.get("/register",registerGet);
 app.post("/register",registerPost);
 app.get("/login",loginGet);
-app.post("/login",loginPost)
+app.post("/login",loginPost);
 app.get("/blog",blogGet);
 app.post("/blog",files.single("image"),isAuthenticate,blogPost);
 app.get("/seemore/:id",seeGet);
@@ -47,17 +66,11 @@ app.get("/otpverification",otpGet);
 app.post("/otpverification/:id",otpPost);
 app.get("/resetpassword",resetGet);
 app.post("/resetpassword/:email/:otp",resetpost);
+app.post("/comment",commentPost);
 
 
 
 
-
-
-
-
-
-
-app.use(express.static("./files/"));
 const port = 3000;
 app.listen(port,()=>{
     console.log("The project has started at port",port)
