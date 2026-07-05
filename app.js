@@ -66,7 +66,7 @@ app.get("/otpverification",otpGet);
 app.post("/otpverification/:id",otpPost);
 app.get("/resetpassword",resetGet);
 app.post("/resetpassword/:email/:otp",resetpost);
-app.post("/comment",commentPost);
+app.post("/comment",isAuthenticate,commentPost);
 
 
 
