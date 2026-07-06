@@ -2,13 +2,12 @@ const { blogs, registers } = require("../model");
 const env = require("dotenv").config()
 
 exports.blogGet= (req,res)=>{
-  console.log(req.query)
     res.render("blog.ejs");
 
 };
 exports.blogPost=async (req,res)=>{
    const registerId = req.registerId//relationship database ko yaa chai middleware bata value aako ho
-   console.log(registerId)
+   console.log("blog controller ko",registerId)
   const {title,subtitle,description,image} = req.body;
   // console.log(req.file)
   

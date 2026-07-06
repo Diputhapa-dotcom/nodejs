@@ -1,4 +1,5 @@
-const { blogs, registers } = require("../model");
+const { where } = require("sequelize");
+const { blogs, registers, comments } = require("../model");
 
 exports.seeGet =async (req,res)=>{
     const id=req.params.id;
@@ -7,5 +8,10 @@ exports.seeGet =async (req,res)=>{
             model:registers
         }
     });
-    res.render("singleBlog.ejs",{data:data});
+   const comment = await comments.findAll({
+        where:{
+            blogId:id
+        }
+    })
+    res.render("singleBlog.ejs",{data:data,comment:comment});
 }

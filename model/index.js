@@ -41,10 +41,11 @@ db.comments = require("./commentModel.js")(sequelize,DataTypes)
 db.registers.hasMany(db.blogs)
 db.blogs.belongsTo(db.registers)
 
+//comment table ma kun user ley register gareko vanera identify garna lai
 db.registers.hasMany(db.comments);
 db.comments.belongsTo(db.registers);
 
-
+//tei comment kun blog ma comment gareko vanera chenna lai
 db.blogs.hasMany(db.comments);
 db.comments.belongsTo(db.blogs)
 

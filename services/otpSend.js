@@ -1,7 +1,4 @@
-const { text } = require("express");
 const nodemailer = require("nodemailer");
-const { from_array } = require("promisify/pstream");
-const { Transaction } = require("sequelize");
 async function sendmail(data){
    const transporter = nodemailer.createTransport({
     service:"gmail",
@@ -17,5 +14,5 @@ async function sendmail(data){
         text:data.text
     }
     await transporter.sendMail(message); //gmail ma janxa mathi ko message
-}
+} 
 module.exports = sendmail
